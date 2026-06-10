@@ -1,0 +1,57 @@
+base_model,nsfw_lora_models,percent_of_nsfw_lora_models
+Illustrious,70037,49.36
+Pony,50782,35.79
+SD 1.5,15010,10.58
+SDXL 1.0,8947,6.31
+Flux.1 D,6685,4.71
+NoobAI,1592,1.12
+Other,931,0.66
+Hunyuan Video,344,0.24
+Wan Video 14B t2v,312,0.22
+Qwen,306,0.22
+Chroma,278,0.2
+Wan Video 2.2 T2V-A14B,259,0.18
+Wan Video 2.2 I2V-A14B,207,0.15
+Flux.1 S,165,0.12
+Wan Video 14B i2v 480p,115,0.08
+Wan Video,100,0.07
+NULL/unknown,87,0.06
+SD 2.0,68,0.05
+SDXL Hyper,59,0.04
+SD 1.4,57,0.04
+SD 3.5 Large,56,0.04
+Wan Video 14B i2v 720p,54,0.04
+SDXL 1.0 LCM,44,0.03
+Wan Video 2.2 TI2V-5B,43,0.03
+SDXL Lightning,38,0.03
+Flux.1 Krea,35,0.02
+Flux.1 Kontext,31,0.02
+SD 2.1,30,0.02
+SD 1.5 Hyper,25,0.02
+Wan Video 1.3B t2v,21,0.01
+SDXL Turbo,16,0.01
+SD 3.5 Medium,16,0.01
+SD 3.5,16,0.01
+SD 1.5 LCM,15,0.01
+SD 2.1 768,11,0.01
+PixArt a,8,0.01
+HiDream,8,0.01
+CogVideoX,8,0.01
+SD 3.5 Large Turbo,5,0.0
+SDXL 0.9,4,0.0
+Hunyuan 1,4,0.0
+PixArt E,3,0.0
+Lumina,3,0.0
+Stable Cascade,2,0.0
+SDXL Distilled,2,0.0
+Pony V7,2,0.0
+Kolors,2,0.0
+SVD XT,1,0.0
+SVD,1,0.0
+SD 3,1,0.0
+SD 2.1 Unclip,1,0.0
+SD 2.0 768,1,0.0
+Playground v2,1,0.0
+Mochi,1,0.0
+LTXV,1,0.0
+AuraFlow,1,0.0

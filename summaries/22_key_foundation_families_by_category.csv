@@ -1,0 +1,15 @@
+category,foundation_family,models,checkpoint_models,lora_models,versions
+NSFW,Illustrious,71679,777,70142,85530
+NSFW,Pony,49788,639,48627,58483
+NSFW,SD 1.5,17279,1459,14479,23738
+NSFW,SDXL,9394,407,8639,11439
+NSFW,Flux,6868,138,6635,8343
+NSFW,WAI-NSFW-Illustrious,22,1,17,29
+NSFW,Juggernaut,6,1,2,6
+non-NSFW/unknown,Illustrious,137486,1717,132060,163815
+non-NSFW/unknown,SD 1.5,137230,7886,110586,168614
+non-NSFW/unknown,Pony,107059,1369,102863,126785
+non-NSFW/unknown,Flux,44567,566,42558,51467
+non-NSFW/unknown,SDXL,42000,1943,37071,52425
+non-NSFW/unknown,WAI-NSFW-Illustrious,183,3,177,189
+non-NSFW/unknown,Juggernaut,46,11,31,101

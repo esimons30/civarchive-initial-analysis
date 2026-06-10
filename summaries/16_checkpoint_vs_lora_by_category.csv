@@ -1,0 +1,5 @@
+category,model_type_group,models,versions,files,files_with_sha256
+NSFW,LORA,141890,181408,193872,193732
+NSFW,Checkpoint,3594,8313,9163,9157
+non-NSFW/unknown,LORA,408937,514292,534872,534371
+non-NSFW/unknown,Checkpoint,14388,30681,34157,34150
