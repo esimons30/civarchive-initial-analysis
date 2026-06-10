@@ -8,8 +8,6 @@ I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ 
 
 According to VioletViolence, the SQLite database was built from repeated scans of the CivitAI public API, starting on **May 8, 2025**, with periodic full scans over time. The data is stored across model, version, and file tables. VioletViolence noted that their scraping used the CivitAI `/api/v1/models` endpoint with parameters such as `sort=Newest`, `period=AllTime`, and `nsfw=true`, with a delay between API calls.
 
-I did **not** run this scraping process myself. I used the shared SQLite snapshot from the CivArchive Discord and treated it as a local archival metadata snapshot.
-
 I also checked platform provenance in the version-level `downloadUrl` field. Almost all versions point to `civitai.com`, so I describe the dataset as a CivArchive-hosted CivitAI metadata snapshot rather than a live CivitAI scrape.
 
 The large raw data export is stored separately here: https://drive.google.com/drive/folders/1dbwpX5MfXhaZu-B3Y5fefwjt7tsdntQE
