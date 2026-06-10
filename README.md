@@ -4,7 +4,7 @@
 
 This repository contains an initial analysis of a community-maintained CivArchive-hosted CivitAI metadata SQLite snapshot.
 
-I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ Archive"** Discord server (https://discord.gg/JDH32JuB). I downloaded it on **May 3, 2026** from a pinned post by **VioletViolence [CMFY]**. The database snapshot I used corresponds to the provider's update from **November 22, 2025**.
+I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ Archive"** Discord server (https://discord.gg/JDH32JuB). I downloaded it on **May 3, 2026** from a pinned post by **VioletViolence [CMFY]**. The database snapshot I used corresponds to their update from **November 22, 2025**.
 
 According to VioletViolence, the SQLite database was built from repeated scans of the CivitAI public API, starting on **May 8, 2025**, with periodic full scans over time. The data is stored across model, version, and file tables. VioletViolence noted that their scraping used the CivitAI `/api/v1/models` endpoint with parameters such as `sort=Newest`, `period=AllTime`, and `nsfw=true`, with a delay between API calls.
 
