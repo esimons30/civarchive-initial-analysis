@@ -126,7 +126,6 @@ Source file: `summaries/03_missingness_overall.csv`
 | `summaries/04_missingness_by_category.csv`          | Missingness split by NSFW vs non-NSFW/unknown                  |
 | `summaries/12_models_without_versions_or_files.csv` | Records with no versions or no files                           |
 | `summaries/13_archived_model_files_by_category.csv` | Archived file mapping coverage                                 |
-| `summaries/14_model_source_breakdown.csv`           | Source/provenance field check                                  |
 
 ### Composition and ecosystem structure
 
@@ -147,7 +146,6 @@ Source file: `summaries/03_missingness_overall.csv`
 | `summaries/20_foundation_shift_over_time.csv`       | Monthly NSFW LoRA counts for Pony, Illustrious, and WAI-NSFW-Illustrious |
 | `summaries/21_creator_concentration_nsfw_loras.csv` | NSFW LoRA creators ranked with cumulative share                          |
 | `summaries/15_nsfw_top_creators.csv`                | Top NSFW creators by model count                                         |
-| `summaries/10_versions_files_by_category.csv`       | Version and file counts by NSFW category                                 |
 | `summaries/11_nsfw_versions_files.csv`              | Version and file summary for NSFW models                                 |
 
 ### Stratification of NSFW signals
