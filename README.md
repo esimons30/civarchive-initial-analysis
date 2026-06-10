@@ -2,13 +2,56 @@
 
 ## Data source
 
-This repository contains an initial analysis of a community-maintained CivArchive metadata SQLite snapshot.
+This repository contains an initial analysis of a community-maintained CivArchive-hosted CivitAI metadata SQLite snapshot.
 
-I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ Archive"** Discord server (https://discord.gg/JDH32JuB). I downloaded it on **May 3, 2026** from a pinned post by **VioletViolence [CMFY]**. The metadata collection started on **May 8, 2025**, with periodic full scans of CivArchive over time. The database snapshot I used corresponds to the provider's update from **November 22, 2025**. According to VioletViolence, the SQLite database was built from repeated scans of the CivitAI public API, starting on May 8, 2025. The data is stored across model, version, and file tables. VioletViolence noted that their scraping used the CivitAI `/api/v1/models` endpoint with parameters such as `sort=Newest`, `period=AllTime`, and `nsfw=true`, with a delay between API calls. I did not run this scraping process myself; I used the shared SQLite snapshot from the CivArchive Discord.
+I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ Archive"** Discord server (https://discord.gg/JDH32JuB). I downloaded it on **May 3, 2026** from a pinned post by **VioletViolence [CMFY]**. The database snapshot I used corresponds to the provider's update from **November 22, 2025**.
 
-I did not directly crawl CivArchive or CivArchive myself. Based on the Discord discussion, large crawling to rebuild the full database appeared unnecessary, so I treated the SQLite file as a local archival metadata snapshot.
+According to VioletViolence, the SQLite database was built from repeated scans of the CivitAI public API, starting on **May 8, 2025**, with periodic full scans over time. The data is stored across model, version, and file tables. VioletViolence noted that their scraping used the CivitAI `/api/v1/models` endpoint with parameters such as `sort=Newest`, `period=AllTime`, and `nsfw=true`, with a delay between API calls.
 
-The large raw data export is stored  separately here: https://drive.google.com/drive/folders/1dbwpX5MfXhaZu-B3Y5fefwjt7tsdntQE
+I did **not** run this scraping process myself. I used the shared SQLite snapshot from the CivArchive Discord and treated it as a local archival metadata snapshot.
+
+I also checked platform provenance in the version-level `downloadUrl` field. Almost all versions point to `civitai.com`, so I describe the dataset as a CivArchive-hosted CivitAI metadata snapshot rather than a live CivitAI scrape.
+
+The large raw data export is stored separately here: https://drive.google.com/drive/folders/1dbwpX5MfXhaZu-B3Y5fefwjt7tsdntQE
+
+## Headline findings initial pass
+
+These findings are based on the broad metadata snapshot of **605,909 models**, not on a pre-filtered NSFW-only subset. This is useful because many foundations are dual-use and appear across both NSFW and non-NSFW/unknown categories.
+
+1. **Dual-use foundations are visible in the metadata**
+   Source: `summaries/17_base_model_overlap_nsfw_nonnsfw.csv`
+
+   Pony and Illustrious both appear in NSFW and non-NSFW/unknown models. Illustrious has 71,557 NSFW models and 136,698 non-NSFW/unknown models, while Pony has 51,936 NSFW models and 113,160 non-NSFW/unknown models. SD 1.5 is more heavily represented in the non-NSFW/unknown population. This supports treating these foundations as dual-use rather than NSFW-only.
+
+2. **Several smaller or newer foundations are more NSFW-skewed**
+   Source: `summaries/19_base_models_30plus_lora_derivatives.csv`
+
+   Among base models with at least 30 LoRA derivatives and at least 30 NSFW LoRA derivatives, some smaller or emerging foundations have a higher NSFW share than larger mainstream foundations. Examples include Wan Video 14B i2v 480p, Wan Video 2.2 I2V-A14B, Chroma, and Wan Video 2.2 T2V-A14B. These may be worth inspecting further as potentially high-NSFW-concentration foundation families.
+
+3. **Pony to Illustrious shift is visible at the broader metadata level**
+   Source: `summaries/20_foundation_shift_over_time.csv`
+
+   Monthly counts of NSFW LoRA models by foundation show Pony dominating earlier in the observation window, with Illustrious becoming more prominent later. This provides broader metadata-level support for the foundation-shift pattern.
+
+4. **The NSFW subset is extremely LoRA-heavy**
+   Sources: `summaries/16_checkpoint_vs_lora_by_category.csv`, `summaries/21_creator_concentration_nsfw_loras.csv`
+
+   141,890 of 149,098 NSFW models are LoRAs, or about 95.2%. Checkpoints account for only about 2.4% of the NSFW subset. The non-NSFW/unknown category is also LoRA-heavy at about 89.5%, but the NSFW subset is even more skewed toward LoRAs.
+
+   Creator-side concentration is also visible among NSFW LoRAs. The ranked creator table can be used to calculate concentration metrics such as top-k shares or a creator-side Gini coefficient.
+
+5. **`nsfwLevel` is multi-modal, not binary**
+   Sources: `summaries/06_nsfw_level_distribution.csv`, `summaries/07_nsfw_level_filter_check.csv`
+
+   Within `nsfw = 1`, level 60 dominates with 122,960 models, followed by level 28 with 19,013 models. A small set of models have `nsfw = 0` but non-trivial `nsfwLevel` values. These cases may be worth inspecting later as metadata-label edge cases or possible declared-vs-platform-side disagreement.
+
+## Methodological note: foundation-family vs. specific-checkpoint granularity
+
+The `base_model` field in this snapshot captures a **foundation-family level** value, such as `Illustrious`, `Pony`, or `SDXL 1.0`. It does not always identify specific checkpoint releases such as `WAI-NSFW-Illustrious-v140` or `CyberRealistic Pony`.
+
+Aggregates reported here therefore describe foundation-family associations rather than exact lineage or specific named child checkpoints. For finer-grained lineage analysis, additional resolution against fields such as `civitai_resources`, `parent_checkpoints`, gallery metadata, or external API mappings would be needed.
+
+A model can also have multiple versions with different `base_model` values. For this reason, base-model tables should be interpreted as **declared base-model associations**, not perfectly disjoint model categories.
 
 ## Database structure
 
@@ -73,19 +116,9 @@ Source file: `summaries/02_nsfw_vs_non_nsfw_counts.csv`
 
 Source file: `summaries/03_missingness_overall.csv`
 
-## Headline findings initial pass
-
-These are initial descriptive findings from the metadata snapshot. I included them as quick checks that may be useful for later analysis.
-
-* **Foundation distribution within NSFW models is heavily concentrated.** Illustrious (48.0%), Pony (34.8%), and SD 1.5 (12.0%) together account for about 95% of NSFW models with a declared base model. Source: `summaries/09_nsfw_base_models.csv`
-
-* **The NSFW ecosystem is LoRA-saturated.** 95.2% of NSFW models are LoRAs (141,890 of 149,098), compared to 89.5% for non-NSFW/unknown. Checkpoints account for only 2.4% of NSFW models. Source: `summaries/05_model_type_by_category.csv`
-
-* **Creator concentration is high.** The top 10 NSFW creators account for around 13K NSFW models combined. This could be useful for follow-up work on production-side concentration. Source: `summaries/15_nsfw_top_creators.csv`
-
-* **`nsfwLevel` is multi-modal, not binary.** Within `nsfw = 1`, level 60 dominates (about 82%), with level 28 as the secondary level (about 12.8%). A small set of `nsfw = 0` models also have non-trivial `nsfwLevel` values, which may be useful to inspect later as potential edge cases. Sources: `summaries/06_nsfw_level_distribution.csv`, `summaries/07_nsfw_level_filter_check.csv`
-
 ## Included summary outputs
+
+### Overview and data quality
 
 | File                                                | Description                                                    |
 | --------------------------------------------------- | -------------------------------------------------------------- |
@@ -93,16 +126,38 @@ These are initial descriptive findings from the metadata snapshot. I included th
 | `summaries/02_nsfw_vs_non_nsfw_counts.csv`          | Counts by NSFW category                                        |
 | `summaries/03_missingness_overall.csv`              | Missingness summary for key fields                             |
 | `summaries/04_missingness_by_category.csv`          | Missingness split by NSFW vs non-NSFW/unknown                  |
-| `summaries/05_model_type_by_category.csv`           | Model type distribution by NSFW category                       |
-| `summaries/06_nsfw_level_distribution.csv`          | Distribution of model-level `nsfwLevel` by category            |
-| `summaries/07_nsfw_level_filter_check.csv`          | Cross-tab/check between `nsfw` and `nsfwLevel`                 |
-| `summaries/09_nsfw_base_models.csv`                 | Base model distribution within the NSFW subset                 |
-| `summaries/10_versions_files_by_category.csv`       | Version and file counts by category                            |
-| `summaries/11_nsfw_versions_files.csv`              | Version and file summary for NSFW models                       |
-| `summaries/12_models_without_versions_or_files.csv` | Models or versions with missing relational records             |
-| `summaries/13_archived_model_files_by_category.csv` | Archived file mapping summary by category                      |
-| `summaries/14_model_source_breakdown.csv`           | Source/provenance breakdown if available in JSON               |
-| `summaries/15_nsfw_top_creators.csv`                | Top creators by NSFW model count                               |
+| `summaries/12_models_without_versions_or_files.csv` | Records with no versions or no files                           |
+| `summaries/13_archived_model_files_by_category.csv` | Archived file mapping coverage                                 |
+| `summaries/14_model_source_breakdown.csv`           | Source/provenance field check                                  |
+
+### Composition and ecosystem structure
+
+| File                                                   | Description                                                             |
+| ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `summaries/05_model_type_by_category.csv`              | Model type distribution by NSFW category                                |
+| `summaries/09_nsfw_base_models.csv`                    | Base model distribution within NSFW                                     |
+| `summaries/16_checkpoint_vs_lora_by_category.csv`      | Checkpoint vs. LoRA shares by NSFW category                             |
+| `summaries/17_base_model_overlap_nsfw_nonnsfw.csv`     | Declared base-model overlap across NSFW and non-NSFW/unknown categories |
+| `summaries/18_nsfw_loras_by_base_model.csv`            | Declared base-model distribution within NSFW LoRAs                      |
+| `summaries/19_base_models_30plus_lora_derivatives.csv` | NSFW share of LoRA derivatives per foundation family                    |
+| `summaries/22_key_foundation_families_by_category.csv` | Foundation-family counts by category and model type                     |
+
+### Temporal and production-side dynamics
+
+| File                                                | Description                                                              |
+| --------------------------------------------------- | ------------------------------------------------------------------------ |
+| `summaries/20_foundation_shift_over_time.csv`       | Monthly NSFW LoRA counts for Pony, Illustrious, and WAI-NSFW-Illustrious |
+| `summaries/21_creator_concentration_nsfw_loras.csv` | NSFW LoRA creators ranked with cumulative share                          |
+| `summaries/15_nsfw_top_creators.csv`                | Top NSFW creators by model count                                         |
+| `summaries/10_versions_files_by_category.csv`       | Version and file counts by NSFW category                                 |
+| `summaries/11_nsfw_versions_files.csv`              | Version and file summary for NSFW models                                 |
+
+### Stratification of NSFW signals
+
+| File                                       | Description                                |
+| ------------------------------------------ | ------------------------------------------ |
+| `summaries/06_nsfw_level_distribution.csv` | `nsfwLevel` distribution by category       |
+| `summaries/07_nsfw_level_filter_check.csv` | Cross-tab of binary `nsfw` and `nsfwLevel` |
 
 ## Main output not included in GitHub
 
@@ -117,9 +172,13 @@ Reason: this file is large and exceeded the GitHub Enterprise file size limit.
 ## Notes and limitations
 
 * This dataset is a local metadata snapshot, not a live scrape.
-* `created_at` and `updated_at` refer to when records were collected or added to the database, not necessarily the original CivArchive publication date.
+* I did not collect the data myself. I analyzed a shared SQLite snapshot from the CivArchive Discord.
+* The underlying collection appears to be based on repeated CivitAI API scans, but the snapshot should not be treated as a live CivitAI scrape.
+* `created_at` and `updated_at` refer to when records were collected or added to the database, not necessarily the original CivitAI publication date.
 * `published_at` from `model_versions` is used as the closest available model-version publication timestamp.
 * NSFW status appears to be available at the model level. Version-level `nsfw` was mostly `NULL` in initial checks, while version-level `nsfwLevel` is available.
 * The full joined export contains one row per model-version-file combination, so models with multiple versions or files appear multiple times.
+* Base-model tables use version-level `base_model`. A model with multiple versions can appear under multiple declared base-model values.
 * `non-NSFW/unknown` combines records where `$.nsfw = 0` and records where the field is missing/NULL.
+
 
