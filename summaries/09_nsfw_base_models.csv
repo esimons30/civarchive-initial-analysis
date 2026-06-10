@@ -1,0 +1,120 @@
+category,base_model,models,versions,files
+NSFW,Illustrious,71557,82092,86802
+NSFW,Pony,51936,59709,64274
+NSFW,SD 1.5,17846,24564,26007
+NSFW,SDXL 1.0,9682,11607,13403
+NSFW,Flux.1 D,6887,8307,8833
+NSFW,NoobAI,1960,2512,2655
+NSFW,Other,1274,1897,1970
+NSFW,Hunyuan Video,357,496,527
+NSFW,Wan Video 14B t2v,344,438,477
+NSFW,Qwen,343,434,460
+NSFW,Wan Video 2.2 T2V-A14B,321,642,684
+NSFW,Wan Video 2.2 I2V-A14B,298,693,781
+NSFW,Chroma,290,379,391
+NSFW,Flux.1 S,184,198,214
+NSFW,Wan Video 14B i2v 480p,152,197,228
+NSFW,Wan Video,127,176,189
+NSFW,SD 1.4,84,114,135
+NSFW,SDXL Hyper,81,104,111
+NSFW,SD 2.0,81,88,94
+NSFW,Wan Video 14B i2v 720p,74,88,105
+NSFW,SDXL Lightning,65,95,101
+NSFW,SD 3.5 Large,56,57,58
+NSFW,SDXL 1.0 LCM,50,55,57
+NSFW,Wan Video 2.2 TI2V-5B,49,57,69
+NSFW,Flux.1 Krea,48,81,86
+NSFW,Flux.1 Kontext,42,54,65
+NSFW,SD 2.1,38,46,61
+NSFW,Wan Video 1.3B t2v,32,38,52
+NSFW,SD 1.5 Hyper,31,33,41
+NSFW,SDXL Turbo,28,35,37
+NSFW,SD 2.1 768,26,36,56
+NSFW,SD 1.5 LCM,23,29,31
+NSFW,SD 3.5 Medium,17,19,21
+NSFW,SD 3.5,17,18,18
+NSFW,PixArt E,10,33,38
+NSFW,HiDream,10,11,11
+NSFW,PixArt a,9,9,9
+NSFW,Lumina,8,23,23
+NSFW,CogVideoX,8,10,10
+NSFW,SD 3.5 Large Turbo,6,6,6
+NSFW,SD 2.0 768,6,6,12
+NSFW,SD 3,5,6,6
+NSFW,SDXL 0.9,4,5,5
+NSFW,Hunyuan 1,4,4,5
+NSFW,Stable Cascade,3,6,6
+NSFW,Pony V7,3,3,3
+NSFW,SDXL Distilled,2,2,2
+NSFW,Playground v2,2,5,11
+NSFW,LTXV,2,2,2
+NSFW,Kolors,2,2,2
+NSFW,SVD XT,1,1,1
+NSFW,SVD,1,1,1
+NSFW,SD 2.1 Unclip,1,1,1
+NSFW,Mochi,1,1,2
+NSFW,AuraFlow,1,1,1
+non-NSFW/unknown,SD 1.5,140637,172906,181924
+non-NSFW/unknown,Illustrious,136698,152677,158844
+non-NSFW/unknown,Pony,113160,128668,133158
+non-NSFW/unknown,Flux.1 D,44631,51108,53044
+non-NSFW/unknown,SDXL 1.0,43365,52440,54986
+non-NSFW/unknown,Other,8438,10948,11270
+non-NSFW/unknown,NoobAI,5895,7056,7269
+non-NSFW/unknown,Hunyuan Video,1494,1684,1750
+non-NSFW/unknown,Qwen,1103,1337,1386
+non-NSFW/unknown,SD 2.1 768,1017,1226,1388
+non-NSFW/unknown,Wan Video 14B t2v,801,947,1009
+non-NSFW/unknown,Flux.1 S,751,1018,1096
+non-NSFW/unknown,Wan Video 2.2 T2V-A14B,593,879,935
+non-NSFW/unknown,Flux.1 Kontext,546,632,650
+non-NSFW/unknown,Wan Video 2.2 I2V-A14B,493,725,777
+non-NSFW/unknown,Wan Video,481,634,660
+non-NSFW/unknown,SD 1.4,444,603,628
+non-NSFW/unknown,Chroma,362,450,516
+non-NSFW/unknown,SD 3.5 Large,333,359,384
+non-NSFW/unknown,SD 2.1,322,348,395
+non-NSFW/unknown,Wan Video 14B i2v 480p,321,368,384
+non-NSFW/unknown,SDXL Lightning,253,381,398
+non-NSFW/unknown,SD 2.0,223,240,254
+non-NSFW/unknown,SDXL 1.0 LCM,189,201,218
+non-NSFW/unknown,SDXL Turbo,186,292,315
+non-NSFW/unknown,Wan Video 14B i2v 720p,176,213,226
+non-NSFW/unknown,Flux.1 Krea,149,162,176
+non-NSFW/unknown,SDXL Hyper,135,170,179
+non-NSFW/unknown,SD 3,122,174,178
+non-NSFW/unknown,SD 1.5 LCM,112,135,140
+non-NSFW/unknown,HiDream,112,187,198
+non-NSFW/unknown,SD 3.5,111,146,154
+non-NSFW/unknown,SD 3.5 Medium,108,143,155
+non-NSFW/unknown,SDXL 0.9,94,135,140
+non-NSFW/unknown,LTXV,94,158,162
+non-NSFW/unknown,Lumina,78,96,98
+non-NSFW/unknown,Stable Cascade,70,154,178
+non-NSFW/unknown,SD 2.0 768,67,97,105
+non-NSFW/unknown,SD 1.5 Hyper,65,74,82
+non-NSFW/unknown,Hunyuan 1,56,60,61
+non-NSFW/unknown,Wan Video 2.2 TI2V-5B,54,74,75
+non-NSFW/unknown,Wan Video 1.3B t2v,52,62,67
+non-NSFW/unknown,PixArt E,45,105,139
+non-NSFW/unknown,Kolors,38,55,56
+non-NSFW/unknown,PixArt a,25,26,27
+non-NSFW/unknown,CogVideoX,19,21,21
+non-NSFW/unknown,SD 3.5 Large Turbo,18,24,24
+non-NSFW/unknown,Playground v2,14,19,19
+non-NSFW/unknown,Pony V7,11,13,17
+non-NSFW/unknown,AuraFlow,11,20,20
+non-NSFW/unknown,SVD XT,10,14,15
+non-NSFW/unknown,SDXL Distilled,9,11,12
+non-NSFW/unknown,Mochi,7,12,13
+non-NSFW/unknown,ODOR,6,6,6
+non-NSFW/unknown,SVD,5,6,6
+non-NSFW/unknown,SD 2.1 Unclip,5,5,7
+non-NSFW/unknown,Wan Video 2.5 T2V,3,3,3
+non-NSFW/unknown,Wan Video 2.5 I2V,2,2,2
+non-NSFW/unknown,Veo 3,1,4,4
+non-NSFW/unknown,Sora 2,1,1,1
+non-NSFW/unknown,Seedream,1,2,2
+non-NSFW/unknown,OpenAI,1,1,1
+non-NSFW/unknown,Nano Banana,1,1,1
+non-NSFW/unknown,Imagen4,1,1,1

@@ -1,0 +1,5 @@
+*.csv
+*.sqlite
+*.7z
+*.rar
+data/
