@@ -8,7 +8,7 @@ I obtained the underlying SQLite database (`CivArchive.sqlite`) from the **"Civ 
 
 According to VioletViolence, the SQLite database was built from repeated scans of the CivitAI public API, starting on **May 8, 2025**, with periodic full scans over time. The data is stored across model, version, and file tables. VioletViolence noted that their scraping used the CivitAI `/api/v1/models` endpoint with parameters such as `sort=Newest`, `period=AllTime`, and `nsfw=true`, with a delay between API calls.
 
-I also checked platform provenance in the version-level `downloadUrl` field. Almost all versions point to `civitai.com`, so I describe the dataset as a CivArchive-hosted CivitAI metadata snapshot rather than a live CivitAI scrape.
+I also checked the version-level downloadUrl field to verify the data source. Almost all versions point to civitai.com, so I describe the dataset as a CivArchive-hosted CivitAI metadata snapshot rather than a live CivitAI scrape.
 
 The large raw data export is stored separately here: https://drive.google.com/drive/folders/1dbwpX5MfXhaZu-B3Y5fefwjt7tsdntQE
 
@@ -24,12 +24,12 @@ These findings are based on the broad metadata snapshot of **605,909 models**, n
 2. **Several smaller or newer foundations are more NSFW-skewed**
    Source: `summaries/19_base_models_30plus_lora_derivatives.csv`
 
-   Among base models with at least 30 LoRA derivatives and at least 30 NSFW LoRA derivatives, some smaller or emerging foundations have a higher NSFW share than larger mainstream foundations. Examples include Wan Video 14B i2v 480p, Wan Video 2.2 I2V-A14B, Chroma, and Wan Video 2.2 T2V-A14B. These may be worth inspecting further as potentially high-NSFW-concentration foundation families.
+   Among base models with at least 30 LoRA derivatives and at least 30 NSFW LoRA derivatives, some smaller or emerging foundations have a higher NSFW share than larger mainstream foundations. Examples include Wan Video 14B i2v 480p, Wan Video 2.2 I2V-A14B, Chroma, and Wan Video 2.2 T2V-A14B. These may be worth inspecting further.
 
 3. **Pony to Illustrious shift is visible at the broader metadata level**
    Source: `summaries/20_foundation_shift_over_time.csv`
 
-   Monthly counts of NSFW LoRA models by foundation show Pony dominating earlier in the observation window, with Illustrious becoming more prominent later. This provides broader metadata-level support for the foundation-shift pattern.
+   Monthly counts of NSFW LoRA models by foundation are consistent with Pony being more prominent earlier in the observation window and Illustrious becoming more prominent later. This provides broader metadata-level support for the foundation-shift pattern.
 
 4. **The NSFW subset is extremely LoRA-heavy**
    Sources: `summaries/16_checkpoint_vs_lora_by_category.csv`, `summaries/21_creator_concentration_nsfw_loras.csv`
